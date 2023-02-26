@@ -24,7 +24,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::middleware('auth:sanctum')->delete('/logout', [AuthController::class, 'logout']);
+Route::middleware('auth:sanctum')->delete('/logout', [AuthController::class, 'logout']);
 Route::get('/refresh', [AuthController::class,'refresh']);
 Route::get('/users/show', [UsersController::class,'showAll']);
 Route::get('/users/show/{id}', [UsersController::class,'showById']);

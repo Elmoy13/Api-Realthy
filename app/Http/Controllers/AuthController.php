@@ -57,6 +57,7 @@ class AuthController extends Controller
                 [
                     'name'=>$data['name'],
                     'email'=>$data['email'],
+                    'locality'=>$data['locality'],
                     'password'=>Hash::make($data['password'])
 
                 ]
