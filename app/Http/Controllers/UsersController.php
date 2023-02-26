@@ -14,22 +14,11 @@ class UsersController extends Controller
     public function update(Request $request,$id)
     {
         $data = $request->json()->all();
-        $itExistsUserName = User::where('userName',$data['firstName'].$data['lastName'].'MB')->exists();
-        if ($itExistsUserName) {
-            return response()->json([
-                'data'=>'User already exists!',
-                'status'=> false
-            ],200);
-        } else {
         $update = User::find($id);
-        $update->firstName=$data['firstName'];
-        $update->lastName=$data['lastName'];
-        $update->brancOfficeId=$data['brancOfficeId'];
-        $update->userName=$data['firstName'].$data['lastName'].'MB';
-        $update->roles=$data['roles'];
-        $update->jobTitle=$data['jobTitle'];
-        $update->address=$data['address'];
-
+        $update->name=$data['name'];
+        $update->locality=$data['locality'];
+        
+       
          if ($update->save()) {
 
            return response()->json([
@@ -41,10 +30,6 @@ class UsersController extends Controller
            'status'=> false,
            ]);
        }
-        }
-
-
-
 
     }
 
@@ -67,15 +52,7 @@ class UsersController extends Controller
         ]);
     }
 
-    public function showUsersByBranch($id)
-    {
-
-        $users=User::where('brancOfficeId','=',$id)->get();
-
-         return response()->json([
-            'data'=>  $users,
-        ]);
-    }
+   
 
     public function showById($id)
     {

@@ -28,7 +28,6 @@ Route::middleware('auth:sanctum')->delete('/logout', [AuthController::class, 'lo
 Route::get('/refresh', [AuthController::class,'refresh']);
 Route::get('/users/show', [UsersController::class,'showAll']);
 Route::get('/users/show/{id}', [UsersController::class,'showById']);
-Route::get('/users/branch/{id}', [UsersController::class,'showUsersByBranch']);
 Route::put('/users/update/{id}', [UsersController::class,'update']);
 Route::put('/users/update/password/{id}', [UsersController::class,'updatePasswordReset']);
 Route::delete('/users/delete/{id}', [UsersController::class,'delete']);
